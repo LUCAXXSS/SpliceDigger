@@ -1,0 +1,23 @@
+Package: SpliceDigger
+Type: Package
+Title: What the Package Does (Title Case)
+Version: 0.1.0
+Author: Muyuan You
+Maintainer: The package maintainer <yourself@somewhere.net>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Depends: 
+    data.table,
+    dplyr,
+    ggplot2,
+    R (>= 2.10),
+    stats
+Imports: 
+    edgeR,
+    ggpubr,
+    ggsci,
+    limma,
+    Rtsne

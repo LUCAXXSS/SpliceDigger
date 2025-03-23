@@ -1,6 +1,6 @@
 Package: SpliceDigger
 Type: Package
-Title: What the Package Does (Title Case)
+Title: SpliceDigger
 Version: 0.1.0
 Author: Muyuan You
 Maintainer: The package maintainer <yourself@somewhere.net>
@@ -20,4 +20,5 @@ Imports:
     ggpubr,
     ggsci,
     limma,
+    pheatmap,
     Rtsne

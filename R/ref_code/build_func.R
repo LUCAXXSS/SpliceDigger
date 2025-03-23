@@ -68,8 +68,13 @@ SpliceDigger.plot_tSNE(plot_dataset ="iso_exp_pct_filtered",anno_to_show = "iso_
 df <- SpliceDigger.findMarkers(anno_to_use = "iso_exp_pct_filtered_kmeans_cluster",cluster_to_check = "cluster_3",only.pos = T)
 
 
-
 SpliceDigger.visualize_AS_transcript(SD_object = A,anno_to_use = "iso_exp_pct_filtered_kmeans_cluster",
                                      anno_to_demo = "cluster_3",feature = "SEC61G",
                                      feature_type = "Symbol",
                                      calculate_method = "mean",color = "#DC0000")
+
+SpliceDigger.visualize_exp_heatmap(SD_object = A,use_data = "exp_raw",FDR_threshold = 0.05,
+                                   anno_to_use = "sort",feature_to_plot = c("EGFR","PDGFRA","SRSF1","SRSF2","SRSF3","SRSF4"))
+
+
+

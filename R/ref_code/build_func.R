@@ -65,7 +65,7 @@ A <- SpliceDigger.calculate_tSNE(A,use_data = "iso_exp_pct_filtered",tSNE_perple
 SpliceDigger.plot_tSNE(plot_dataset ="iso_exp_pct_filtered",anno_to_show = "iso_exp_pct_filtered_kmeans_cluster")
 
 
-df <- SpliceDigger.findMarkers(anno_to_use = "iso_exp_pct_filtered_kmeans_cluster",cluster_to_check = "cluster_3",only.pos = T)
+df <- SpliceDigger.findMarkers(use_data = "exp_raw",anno_to_use = "iso_exp_pct_filtered_kmeans_cluster",cluster_to_check = "cluster_3",only.pos = F)
 
 
 SpliceDigger.visualize_AS_transcript(SD_object = A,anno_to_use = "iso_exp_pct_filtered_kmeans_cluster",
@@ -77,4 +77,10 @@ SpliceDigger.visualize_exp_heatmap(SD_object = A,use_data = "exp_raw",FDR_thresh
                                    anno_to_use = "sort",feature_to_plot = c("EGFR","PDGFRA","SRSF1","SRSF2","SRSF3","SRSF4"))
 
 
+res <- SpliceDigger.plot_GSEA(SD_object = A,cluster_to_check = "cluster_1",gsea_pvalue = 0.1, )
+
+
+res
+
+SpliceDigger.plot_GSEA_ridgeplot(geneset_to_plot = "HALLMARK_ANGIOGENESIS")
 

@@ -22,7 +22,6 @@ SpliceDigger.filter_SDobject<- function(SD_object=A,AS_threshold=0.1,AS_var_topn
   iso_exp <- iso_exp[rowMeans(iso_exp)>AS_threshold,]
   # 第三步：生成一个方差表，并确保行名保留
 
-
   exp_var <- apply(iso_exp, 1, var)  # 直接计算方差并保留为一个向量
   exp_var <- data.frame(var = exp_var, row.names = names(exp_var))  # 将其转换为数据框，行名重建
   exp_var$keep <- "keep"

@@ -11,8 +11,10 @@ usethis::use_package(package = "edgeR", type = "Imports")
 usethis::use_package(package = "limma", type = "Imports")
 usethis::use_package(package = "ggpubr", type = "Imports")
 usethis::use_package(package = "pheatmap", type = "Imports")
-
-
+usethis::use_package(package = "msigdbr", type = "Imports")
+usethis::use_package(package = "clusterProfiler", type = "Imports")
+usethis::use_package(package = "scales", type = "Imports")
+usethis::use_package(package = "enrichplot", type = "Imports")
 #' Title a small function to import dataframe in a exp manner
 #'
 #' @param dir the dir of data.frame

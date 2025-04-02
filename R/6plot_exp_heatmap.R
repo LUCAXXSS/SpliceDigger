@@ -30,19 +30,18 @@ SpliceDigger.visualize_exp_heatmap <- function(SD_object,use_data="exp_raw",feat
   res_all <- genenames
   res_all <- merge(res_all,res,by = "symbol",all.x = T)
 
-  res_small <- res_all["logFC"]
+  res_small <-data.frame( res_all["logFC"],row.names = res_all$symbol)
   colnames(res_small) <- i
   Var_deg_res[[i]] <- res_small
   }
 
   exp_logfc <- as.data.frame(Var_deg_res)
-  row.names(exp_logfc) <- genenames$symbol
 
 
   exp_plot <- exp_logfc[row.names(exp_logfc)%in%feature_to_plot,]
   exp_plot[is.na(exp_plot)] <- 0
 
-  p <- pheatmap::pheatmap(exp_plot,scale = "row",cluster_rows = F,cluster_cols = F,treeheight_col =0,fontsize_row = 5,
+  p <- pheatmap::pheatmap(exp_plot,scale = "none",cluster_rows = F,cluster_cols = F,treeheight_col =0,fontsize_row = 5,
            color = colorRampPalette(color)(50))
 
   p

@@ -41,7 +41,7 @@ SpliceDigger.visualize_exp_heatmap <- function(SD_object,use_data="exp_raw",feat
   exp_plot <- exp_logfc[row.names(exp_logfc)%in%feature_to_plot,]
   exp_plot[is.na(exp_plot)] <- 0
 
-  p <- pheatmap::pheatmap(exp_plot,scale = "none",cluster_rows = F,cluster_cols = F,treeheight_col =0,fontsize_row = 5,
+  p <- pheatmap::pheatmap(exp_plot,scale = "row",cluster_rows = F,cluster_cols = F,treeheight_col =0,fontsize_row = 5,
            color = colorRampPalette(color)(50))
 
   p

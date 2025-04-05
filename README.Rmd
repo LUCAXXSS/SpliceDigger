@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 
+[![CRAN status](R)](https://www.r-project.org/logo/)
 <!-- badges: end -->
 
 The goal of SpliceDigger is to provide an intuitive and comprehensive toolkit for the analysis and visualization of alternative splicing events across various biological conditions or experiments. SpliceDigger aims to help users uncover insights into the dynamics of splicing regulation by integrating statistical analyses and customizable visualization capabilities with ease of use.
@@ -67,6 +68,39 @@ SpliceDigger.visualize_AS_transcript(SD_object = SD.obj,anno_to_use = "iso_exp_p
 
 SpliceDigger.visualize_exp_heatmap(SD_object = SD.obj,use_data = "exp_raw",FDR_threshold = 0.05,
                                    anno_to_use = "sort",feature_to_plot = c("EGFR","PDGFRA","SRSF1","SRSF2","SRSF3","SRSF4"))
+```
+
+```{r example1,eval=FALSE}
+SpliceDigger.plot_GSEA(SD_object=SD.obj,use_data="exp_raw",                                        anno_to_use="iso_exp_pct_filtered_kmeans_cluster", 
+                        cluster_to_check="cluster_2",
+                        topn=20,
+                        msigdbr_species = "Homo sapiens",                                               msigdbr_category="C2",
+                        msigdbr_subcategory="CP:WIKIPATHWAYS",
+                        gsea_pvalue=0.05,plot=T,color="#DC0000")
+
+```
+
+```{r example2,eval=TRUE}
+ SpliceDigger.plot_GSEA_ridgeplot(SD_object=SD.obj,use_data="exp_raw",                                  anno_to_use="iso_exp_pct_filtered_kmeans_cluster",
+                                  cluster_to_check="cluster_2",
+                                  topn=20,
+                                  custom=F,
+                                  msigdbr_species = "Homo sapiens",                                             msigdbr_category="H",
+                                  msigdbr_subcategory=NULL,
+                                  geneset_to_plot="HALLMARK_ANGIOGENESIS")
+
+```
+
+
+The psi(percentage splice-in) files can also be intergraded into SpliceDigger pipeline
+
+```{r example3}
+
+SD.obj <- SpliceDigger.add_SUPPA2_psi(SD_object=SD.obj,psi_matrix=psi_You_etal_2025)
+
+SpliceDigger.plot_AS_pieplot(SD_object=SD.obj,return_pie_plot=T,anno_to_use="iso_exp_pct_filtered_kmeans_cluster",cluster_to_check="cluster_2")
+                                         
+SpliceDigger.plot_gene_AS_pieplot(SD_object=SD.obj,gene_to_use=c("EGFR"),anno_to_use="sort",cluster_to_check="BCBM")                                           
 
 
 

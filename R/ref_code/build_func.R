@@ -32,8 +32,17 @@ A
 
 exp_You_etal_2025 <- A
 
+A <- fread("data/AS_events.psi")%>%as.data.frame()
+row.names(A)<- A[,"V1"]
+A[,"V1"] <- NULL
+A <- as.data.frame(A)
+A
 
-usethis::use_data(exp_You_etal_2025, overwrite = TRUE)
+psi_You_etal_2025 <- A
+
+
+
+#usethis::use_data(psi_You_etal_2025, overwrite = TRUE)
 
 ENST <- row.names(iso_tpm_You_etal_2025)
 
@@ -52,13 +61,15 @@ anno <- anno[row.names(anno)%in%colnames(exp_You_etal_2025),,drop = FALSE]
 
 anno <- anno[match(colnames(exp_You_etal_2025),row.names(anno)),,drop = FALSE]
 
-dataanno_You_etal_2025 <- anno
+dataanno_You_etal_2025 <- anno%>%as.data.frame()
 
 #usethis::use_data(dataanno_You_etal_2025)
 
-A <- SpliceDigger.add_annotation(A,dataanno_You_etal_2025)
 
-A <- SpliceDigger.filter_SDobject(AS_threshold = 0.2,AS_var_topn = 5000,exp_threshold = 20,exp_var_topn = 5000)
+
+A <- SpliceDigger.add_annotation(A,anno = dataanno_You_etal_2025)
+
+A <- SpliceDigger.filter_SDobject(A,AS_threshold = 0.1,AS_var_topn = 5000,exp_threshold = 20,exp_var_topn = 5000)
 
 A <- SpliceDigger.calculate_tSNE(A,use_data = "iso_exp_pct_filtered",tSNE_perplexity = 15,kmeans_centers = 3,seed = 4401)
 
@@ -83,4 +94,16 @@ res <- SpliceDigger.plot_GSEA(SD_object = A,cluster_to_check = "cluster_1",gsea_
 res
 
 SpliceDigger.plot_GSEA_ridgeplot(geneset_to_plot = "HALLMARK_ANGIOGENESIS")
+
+
+A <- SpliceDigger.add_SUPPA2_psi(SD_object=A,psi_matrix=psi_You_etal_2025)
+
+
+
+
+PLOT <- SpliceDigger.plot_gene_AS_pieplot(SD_object=A,gene_to_use=c("SRSF1"),
+                                              anno_to_use="sort",cluster_to_check="BCBM");PLOT
+
+
+
 

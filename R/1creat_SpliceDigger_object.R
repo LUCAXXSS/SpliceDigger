@@ -2,11 +2,13 @@
 
 #' Title SpliceDigger.create_SD_object
 #' return a list object with ENST_raw,exp_raw and ENSG_pct
-#' @param ENST_table
-#' @param exp_table
-#' @param calculate_pct
+#' @param ENST_table A data.frame where row.names be ENST names and colnames be samplenames, this
+#'         file could be usually generated from SUPPA2 pipelines
+#' @param exp_table A data.frame where row.names be gene names and colnames be samplenames, this
+#'         file could be usually generated from expression matrix pipelines
+#' @param calculate_pct if calculate all ENST percentage under one ENSG number
 #'
-#' @return
+#' @return A SpliceDigger object
 #' @export
 #'
 #' @examples
@@ -85,7 +87,7 @@ SpliceDigger.create_SD_object <- function(ENST_table=iso_tpm_You_etal_2025,exp_t
 #' Title SpliceDigger.add_annotation
 #' Add annotation to SpliceDigger object
 #' @param SD_object
-#' @param anno
+#' @param anno a data.frame containing all annotaion info, row.names should be set to sample names
 #'
 #' @return
 #' @export
